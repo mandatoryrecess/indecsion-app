@@ -15,9 +15,8 @@ const multiplier = {
    numbers: [1, 2, 3, 4 ],
    multiplieBy: 6,
    multiply() {
-      const multiplyThis = this.numbers.map((num) => {
-       return num * this.multiplieBy
-     })
+      const multiplyThis = this.numbers.map(num => num * this.multiplieBy
+     )
      return multiplyThis;
    }
 }
