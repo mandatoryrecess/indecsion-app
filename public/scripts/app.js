@@ -14,9 +14,7 @@ var app = {
   React.createElement(
     "h1",
     null,
-    " ",
-    app.title,
-    " "
+    app.title
   ),
   app.subtitle && React.createElement(
     "p",
@@ -34,53 +32,30 @@ var app = {
     React.createElement(
       "li",
       null,
-      app.options
+      "Item One"
+    ),
+    React.createElement(
+      "li",
+      null,
+      "Item Two"
+    ),
+    React.createElement(
+      "li",
+      null,
+      "Item Three"
+    )
+  ),
+  React.createElement(
+    "form",
+    null,
+    React.createElement("input", { type: "text", name: "option" }),
+    React.createElement(
+      "button",
+      null,
+      "Add Option"
     )
   )
 );
-var count = 0;
-var addOne = function addOne() {
-  count++;
-  resnderCounterApp();
-};
-var minusOne = function minusOne() {
-  count--;
-  resnderCounterApp();
-};
-var reset = function reset() {
-  count = 0;
-  resnderCounterApp();
-};
 
 var appRoot = document.getElementById('app');
-
-var resnderCounterApp = function resnderCounterApp() {
-  var TemplateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-      "h1",
-      null,
-      "Count: ",
-      count
-    ),
-    React.createElement(
-      "button",
-      { onClick: addOne, className: "button" },
-      "+1"
-    ),
-    React.createElement(
-      "button",
-      { onClick: minusOne, className: "button" },
-      "-1"
-    ),
-    React.createElement(
-      "button",
-      { onClick: reset, className: "button" },
-      "reset"
-    )
-  );
-  ReactDOM.render(TemplateTwo, appRoot);
-};
-
-resnderCounterApp();
+ReactDOM.render(template, appRoot);
