@@ -1,7 +1,7 @@
 console.log('App.js is running!');
 
 const app = {
-  t: "Indecision App", 
+  title: "Indecision App", 
   subtitle: "SUBTITLE", 
   options: []
 }
@@ -14,6 +14,14 @@ const onFormSubmit = (e) => {
     renderOption();
   }
 };
+
+const removeButton = () => {
+
+   app.options = []; 
+
+  renderOption();
+};
+
 const appRoot = document.getElementById('app');
 
 const renderOption = () => {
@@ -21,7 +29,8 @@ const renderOption = () => {
     <span>
     <h1>{app.title}</h1>
     {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? 'here are your options' : 'you have no optioons'}</p>
+    <p>{app.options.length > 0 ? 'here are your options' : 'you have no options'}</p>
+    <button onClick={removeButton}>Remove</button>
     <p>{app.options.length}</p>
       <ol>
         <li>Item One</li>
@@ -32,6 +41,8 @@ const renderOption = () => {
       <input type="text" name="option"/>
       <button>Add Option</button>
       </form>
+
+     
     </span>
 
   );

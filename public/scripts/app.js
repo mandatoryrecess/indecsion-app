@@ -3,7 +3,7 @@
 console.log('App.js is running!');
 
 var app = {
-  t: "Indecision App",
+  title: "Indecision App",
   subtitle: "SUBTITLE",
   options: []
 };
@@ -16,6 +16,14 @@ var onFormSubmit = function onFormSubmit(e) {
     renderOption();
   }
 };
+
+var removeButton = function removeButton() {
+
+  app.options = [];
+
+  renderOption();
+};
+
 var appRoot = document.getElementById('app');
 
 var renderOption = function renderOption() {
@@ -35,7 +43,12 @@ var renderOption = function renderOption() {
     React.createElement(
       "p",
       null,
-      app.options.length > 0 ? 'here are your options' : 'you have no optioons'
+      app.options.length > 0 ? 'here are your options' : 'you have no options'
+    ),
+    React.createElement(
+      "button",
+      { onClick: removeButton },
+      "Remove"
     ),
     React.createElement(
       "p",
