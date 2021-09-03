@@ -3,26 +3,41 @@ console.log('App.js is running!');
 const app = {
   t: "Indecision App", 
   subtitle: "SUBTITLE", 
-  options: ['one', 'two', 'three', 'four']
+  options: []
 }
-
-// JSX - JavaScript XML
-const template = (
-  <span>
-  <h1>{app.title}</h1>
-  {app.subtitle && <p>{app.subtitle}</p>}
-  <p>{app.options.length > 0 ? 'here are your options' : 'you have no optioons'}</p>
-    <ol>
-      <li>Item One</li>
-      <li>Item Two</li>
-      <li>Item Three</li>
-    </ol>
-    <form>
-    <input type="text" name="option"/>
-    <button>Add Option</button>
-    </form>
-  </span>
-);
-
+const onFormSubmit = (e) => {
+  e.preventDefault();
+  const option = e.target.elements.option.value;
+  if(option) {
+    app.options.push(option); 
+    e.target.elements.option.value = '';
+    renderOption();
+  }
+};
 const appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot); 
+
+const renderOption = () => {
+  const template = (
+    <span>
+    <h1>{app.title}</h1>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{app.options.length > 0 ? 'here are your options' : 'you have no optioons'}</p>
+    <p>{app.options.length}</p>
+      <ol>
+        <li>Item One</li>
+        <li>Item Two</li>
+        <li>Item Three</li>
+      </ol>
+      <form onSubmit={onFormSubmit}>
+      <input type="text" name="option"/>
+      <button>Add Option</button>
+      </form>
+    </span>
+
+  );
+      ReactDOM.render(template, appRoot); 
+
+};
+// JSX - JavaScript XML
+
+renderOption();
