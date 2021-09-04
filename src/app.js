@@ -30,7 +30,11 @@ const renderOption = () => {
     <h1>{app.title}</h1>
     {app.subtitle && <p>{app.subtitle}</p>}
     <p>{app.options.length > 0 ? 'here are your options' : 'you have no options'}</p>
-    <button onClick={removeButton}>Remove</button>
+    <button onClick={removeButton}>Remove All</button>
+    {
+      [99, 98, 97]
+    }
+    {<p>1</p>}
     <p>{app.options.length}</p>
       <ol>
         <li>Item One</li>

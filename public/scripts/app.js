@@ -48,7 +48,13 @@ var renderOption = function renderOption() {
     React.createElement(
       "button",
       { onClick: removeButton },
-      "Remove"
+      "Remove All"
+    ),
+    [99, 98, 97],
+    React.createElement(
+      "p",
+      null,
+      "1"
     ),
     React.createElement(
       "p",
