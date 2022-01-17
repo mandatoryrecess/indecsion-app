@@ -1,58 +1,51 @@
-console.log('App.js is running!');
+console.log('App.js is runningxx!');
 
 const app = {
-  title: "Indecision App", 
-  subtitle: "SUBTITLE", 
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
   options: []
-}
+};
+
 const onFormSubmit = (e) => {
   e.preventDefault();
+
   const option = e.target.elements.option.value;
-  if(option) {
-    app.options.push(option); 
+
+  if (option) {
+    app.options.push(option);
     e.target.elements.option.value = '';
-    renderOption();
+    render();
   }
 };
 
-const removeButton = () => {
-
-   app.options = []; 
-
-  renderOption();
+const onRemoveAll = () => {
+  app.options = [];
+  render();
 };
 
 const appRoot = document.getElementById('app');
 
-const renderOption = () => {
+const render = () => {
   const template = (
-    <span>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? 'here are your options' : 'you have no options'}</p>
-    <button onClick={removeButton}>Remove All</button>
-    {
-      [99, 98, 97]
-    }
-    {<p>1</p>}
-    <p>{app.options.length}</p>
+    <div>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+      <p>{app.options.length}</p>
+      <button onClick={onRemoveAll}>Remove All</button>
       <ol>
-        <li>Item One</li>
-        <li>Item Two</li>
-        <li>Item Three</li>
+        {
+          app.options.map((option) => <li key={option}>{option}</li>)
+        }
       </ol>
       <form onSubmit={onFormSubmit}>
-      <input type="text" name="option"/>
-      <button>Add Option</button>
+        <input type="text" name="option" />
+        <button>Add Option</button>
       </form>
-
-     
-    </span>
-
+    </div>
   );
-      ReactDOM.render(template, appRoot); 
 
+  ReactDOM.render(template, appRoot);
 };
-// JSX - JavaScript XML
 
-renderOption();
+render();
