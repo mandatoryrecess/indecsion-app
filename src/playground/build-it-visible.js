@@ -1,34 +1,25 @@
-let Visibility = 'show details';
-let Explainer = "explaining 1";
-const bigTitle = "hi";
-
-
-let Details = () => {
-  
-  if (Visibility === 'show details'){
-    Visibility = "Hide details";
-    Explainer = "explaining 2";
-  } else {
-    Visibility = "show details"
-    Explainer = "explaining 1";
-  }
-  showDetails()
+let visibility = false; 
+const toggleVisibility = () => {
+  visibility = !visibility;
+  render();
 };
 
-
-
-const appRoot = document.getElementById('app');
-
-const showDetails = () => {
-  const template = (
+const render = () => {
+  const jsx = (
     <div>
-      <h1>bigTitle</h1>
-      <button onClick={Details}>{Visibility}</button>
-      <p>{Explainer}</p>
+    <h1>HELLO</h1>
+      <button onClick={toggleVisibility}>
+      {visibility ? 'Hide details' : 'Show Details'}
+      </button>
+      {visibility && (
+        <div>
+          <p>These are some details you can now see</p>
+        </div>
+      )}
     </div>
   );
 
-  ReactDOM.render(template, appRoot);
+  ReactDOM.render(jsx, document.getElementById('app'));
 };
 
-showDetails();
+render();

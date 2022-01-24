@@ -1,45 +1,37 @@
-"use strict";
+'use strict';
 
-var Visibility = 'show details';
-var Explainer = "explaining 1";
-var bigTitle = "hi";
-
-var Details = function Details() {
-
-  if (Visibility === 'show details') {
-    Visibility = "Hide details";
-    Explainer = "explaining 2";
-  } else {
-    Visibility = "show details";
-    Explainer = "explaining 1";
-  }
-  showDetails();
+var visibility = false;
+var toggleVisibility = function toggleVisibility() {
+  visibility = !visibility;
+  render();
 };
 
-var appRoot = document.getElementById('app');
-
-var showDetails = function showDetails() {
-  var template = React.createElement(
-    "div",
+var render = function render() {
+  var jsx = React.createElement(
+    'div',
     null,
     React.createElement(
-      "h1",
+      'h1',
       null,
-      "bigTitle"
+      'HELLO'
     ),
     React.createElement(
-      "button",
-      { onClick: Details },
-      Visibility
+      'button',
+      { onClick: toggleVisibility },
+      visibility ? 'Hide details' : 'Show Details'
     ),
-    React.createElement(
-      "p",
+    visibility && React.createElement(
+      'div',
       null,
-      Explainer
+      React.createElement(
+        'p',
+        null,
+        'These are some details you can now see'
+      )
     )
   );
 
-  ReactDOM.render(template, appRoot);
+  ReactDOM.render(jsx, document.getElementById('app'));
 };
 
-showDetails();
+render();
