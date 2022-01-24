@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('App.js is running!');
+console.log('App.js is runningxx!');
 
 var app = {
   title: 'Indecision App',
@@ -25,6 +25,10 @@ var onRemoveAll = function onRemoveAll() {
   render();
 };
 
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.random();
+  console.log(randomNum);
+};
 var appRoot = document.getElementById('app');
 
 var render = function render() {
@@ -47,9 +51,9 @@ var render = function render() {
       app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
-      'p',
-      null,
-      app.options.length
+      'button',
+      { onClick: onMakeDecision },
+      'What should I do?'
     ),
     React.createElement(
       'button',
